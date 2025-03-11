@@ -48,7 +48,12 @@ jobs:
 
       - name: Bumb version
         id: version
-        run: RELEASE_REQUIRED="yes"
+        run: |
+          PACKAGE_VERSION=$(node -p "require('home-assistant-matter-hub/package.json').version")
+          echo "package-version=$PACKAGE_VERSION" >> "$GITHUB_OUTPUT"
+          RELEASE_REQUIRED="yes"
+          echo "New Version: $PACKAGE_VERSION, Release required: $RELEASE_REQUIRED"
+          echo "release-required=$RELEASE_REQUIRED" >> "$GITHUB_OUTPUT"
 
       - name: Create Changelog
         id: changelog
