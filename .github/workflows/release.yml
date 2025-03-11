@@ -46,6 +46,10 @@ jobs:
 
       - run: npm ci
 
+      - name: Bumb version
+        id: version
+        run: RELEASE_REQUIRED="yes"
+
       - name: Create Changelog
         id: changelog
         if: steps.version.outputs.release-required == 'yes'
