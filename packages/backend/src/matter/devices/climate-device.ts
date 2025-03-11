@@ -19,8 +19,8 @@ import { Thermostat } from "@matter/main/clusters";
 import { ClusterType } from "@matter/main/types";
 
 const climateOnOffConfig: OnOffConfig = {
-   turnOn: { action: "climate.turn_on" },
-   turnOff: { action: "climate.turn_off" },
+  turnOn: { action: "climate.turn_on" },
+  turnOff: { action: "climate.turn_off" },
 };
 const humidityConfig: HumidityMeasurementConfig = {
   getValue(entity: HomeAssistantEntityState) {
