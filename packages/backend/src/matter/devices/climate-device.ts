@@ -1,4 +1,5 @@
 import { ThermostatDevice } from "@matter/main/devices";
+import { OnOffConfig, OnOffServer } from "../behaviors/on-off-server.js";
 import { BasicInformationServer } from "../behaviors/basic-information-server.js";
 import { IdentifyServer } from "../behaviors/identify-server.js";
 import {
@@ -17,6 +18,10 @@ import { FeatureSelection } from "../../utils/feature-selection.js";
 import { Thermostat } from "@matter/main/clusters";
 import { ClusterType } from "@matter/main/types";
 
+const climateOnOffConfig: OnOffConfig = {
+   turnOn: { action: "climate.turn_on" },
+   turnOff: { action: "climate.turn_off" },
+};
 const humidityConfig: HumidityMeasurementConfig = {
   getValue(entity: HomeAssistantEntityState) {
     const attributes = entity.attributes as ClimateDeviceAttributes;
@@ -55,6 +60,7 @@ const ClimateDeviceType = (
     BasicInformationServer,
     IdentifyServer,
     HomeAssistantEntityBehavior,
+    OnOffServer.set({ config: climateOnOffConfig }),
     ThermostatServer.with(
       ...thermostatFeatures(supportsCooling, supportsHeating),
     ),
