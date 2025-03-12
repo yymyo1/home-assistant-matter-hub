@@ -1,3 +1,7 @@
+## 3.0.0-alpha.73 (2025-03-12)
+
+This was a version bump only, there were no code changes.
+
 ## 3.0.0-alpha.72 (2025-02-23)
 
 ### 🚀 Features
